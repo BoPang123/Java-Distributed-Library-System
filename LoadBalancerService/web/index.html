@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<link rel="stylesheet" href="css/style.css">
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		 
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container w3">
+        <h2>Register</h2>
+		<form>
+			<div class="username">
+                            <span class="username" >Username:</span>
+				<input id = "csnuser" type="text" name="name" class="name" placeholder="" required="">
+				<div class="clear"></div>
+			</div>
+			<div class="password-agileits">
+				<span class="username">Password:</span>
+				<input  id = "csnpwd" type="password" name="password" class="password" placeholder="" required="">
+				<div class="clear"></div>
+			</div>
+                        <div class="email">
+				<span class="username">Email:</span>
+				<input  id = "csnem" type="text" name="email" class="email" placeholder="" required="">
+				<div class="clear"></div>
+                        </div>
+                        <div class="telephone">
+				<span class="username">Telephone:</span>
+				<input  id = "csntele" type="text" name="telephone" class="telephone" placeholder="" required="">
+				<div class="clear"></div>
+			</div>
+			<div class="login-w3">
+					<input type="button" value="submit" class="btn">
+			</div>
+			<div class="clear"></div>
+		</form>
+	</div>
+	<div class="footer-w3l">
+		<p> Design by Group 5</p>
+	</div>
+   <script type="text/javascript"  >
+        $(function(){
+            $(".btn").click(function(){
+            var userName = $("#csnuser").val();
+	    var userPassword = $("#csnpwd").val();
+            var userEmail = $("#csnem").val();
+            var userTele = $("#csntele").val();
+			//发起请求
+			$.ajax({
+				url:"RegisterServlet",
+				type:"post",
+				data:{
+					"userName":userName,
+					"userPassword":userPassword,
+                                        "userEmail":userEmail,
+                                        "userTele":userTele
+				},
+				success:function(data){
+                                      console.log(data)
+                                        if(data.code == 1){//注册失败
+					alert(data.msg)
+                                        }else{
+                                        alert("You have registered!"),
+                                        location.href = "first.html";
+                                     }
+				}				
+                           })
+                       })
+        })
+    </script>
+</body>
+</html>

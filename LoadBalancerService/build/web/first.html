@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+<a href="http://:8000"> <img src="file:///c:/images/welcome.png" alt="Online Library"<br /> </a>
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style >
+
+
+img { 
+    width: 400px;
+    margin-top: 300px; 
+  }
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.big_box{
+			height: 100vh;
+			background: url("./images/bg.jpg");
+			background-size: 100% 100%;
+		}
+       
+	</style>
+         </head>   
+    <body >
+<div class="big_box">   
+<center>
+    <a id = "csnlo" href="javascript:void(0);" onclick="get()"><img src="./images/login.png" 
+/> </a> 
+<a href="index.html"><img src="./images/Register.png" 
+/> </a> 
+</center>
+</div>
+         <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script type="text/javascript">
+    function get(){ 
+			$.ajax({
+				url:"LoadBalancerServlet",
+                                data:{},
+				type:"post",
+				success:function(data){
+                                      console.log(data.ip)
+                                      location.href = data.ip;
+                                }				
+                       });
+                   }
+</script>
+</body>
+</html>
